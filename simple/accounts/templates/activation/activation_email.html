@@ -1,0 +1,3 @@
+Tên tài khoản: {{ user.get_username }}
+Đường link:
+{{ protocol}}://{{ domain }}{% url 'accounts:activation_confirm' uidb64=uid token=token %}

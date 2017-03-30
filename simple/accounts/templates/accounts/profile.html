@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+	Profile
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h2>
+			<label class="control-label">Tên tài khoản:&nbsp;</label>
+			{{ user }}
+		</h2>
+		<h2>
+			<label class="control-label">Email:&nbsp;</label>
+			{{ user.email }}
+		</h2>
+
+		<h2>
+			<label class="control-label">Họ và Tên:&nbsp;</label>
+			{{ user.last_name }}&nbsp;{{ user.first_name }}
+		</h2>
+	</div>
+{% endblock %}

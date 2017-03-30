@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<title>{% block title %}Base{% endblock %}</title>
+	<!-- Latest compiled and minified CSS -->
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	{% load staticfiles %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css'%}">
+  	<script src="{% static 'jQuery/jquery-3.1.1.min.js' %}"></script>
+  	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  	<script src="{% static 'jQuery/select_all.js' %}"></script>
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="{% url 'accounts:home' %}">
+						<span class="glyphicon glyphicon-home"></span>&nbsp;jDream
+					</a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+				<div class="collapse navbar-collapse" id="myNavbar">
+					{% if user.is_authenticated %}		
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="glyphicon glyphicon-list"></span>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+
+								<li>
+									<a href="{% url 'accounts:view_profile'%}">Thông tin cá nhân</a>
+								</li>
+
+								<li>
+									<a href="{% url 'accounts:edit_profile'%}">Sửa thông tin</a>
+								</li>
+
+								<li>
+									<a href="{% url 'accounts:change_password'%}">Đổi mật khẩu</a>
+								</li>								
+							</ul>
+						</li>
+						<li>
+							<a href="{% url 'accounts:logout' %}">
+								<span class="glyphicon glyphicon-log-out"></span>&nbsp;Đăng xuất
+							</a>
+						</li>									
+					</ul>
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="{% url 'jDream:view_khach_hang' %}">Khách Hàng</a>
+						</li>
+						<li>
+							<a href="{% url 'jDream:view_hang' %}">Hàng Hóa</a>
+						</li>
+						<li>
+							<a href="{% url 'jDream:view_nhan_vien' %}">Nhân Viên</a>
+						</li>
+						<li>
+							<a href="{% url 'jDream:view_HDBan' %}">Hóa đơn bán</a>
+						</li>
+					</ul>
+					{% else %}
+					<ul class="nav navbar-nav navbar-right">
+                        <li>
+							<a href="{% url 'accounts:activation' %}">Gửi yêu cầu xác nhận</a>
+						</li>
+                         <li>
+							<a href="{% url 'accounts:password_reset' %}">Lấy lại mật khẩu</a>
+						</li>
+						<li>
+							<a href="{% url 'accounts:register' %}">
+								<span class="glyphicon glyphicon-user"></span>&nbsp;Đăng ký
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'accounts:login' %}">
+								<span class="glyphicon glyphicon-log-in"></span>&nbsp;Đăng nhập
+							</a>
+						</li>
+					</ul>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+	</div>
+	{% block body %}
+	{% endblock %}
+</body>
+</html>

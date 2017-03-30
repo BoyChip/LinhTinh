@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Đăng ký
+{% endblock %}
+
+{% block body %}
+    {% load staticfiles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+    <div id="id01" class="modal">
+        <div class="panel panel-danger">
+                <div class="panel-body">
+                    Khi bạn đăng ký thành công sẽ nhận được một yêu cầu kích hoạt tài khoản qua mail của bạn
+                </div>
+            </div>
+        <form class="modal-content animate" method="post">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+            {% csrf_token %}
+            <div class="form-container">
+                {% for field in form %}
+                    {{ field.errors }}
+                    {{ field }}
+                {% endfor %}
+
+              <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Thoát</button>
+                <button type="submit" class="signupbtn">Đăng ký</button>
+              </div>
+            </div>
+          </form>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+	Xóa nhân viên
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Xóa nhân viên
+			</div>
+
+			<div class="panel-body">
+				<form method="post" class="form-horizontal">
+					{% csrf_token %}
+					<ul>
+						{% for field in form %}
+							<li>{{ field.label_tag }} {{ field.value }}</li>
+						{% endfor %}
+					</ul>
+					<h3>Bạn có muốn xóa không?</h3>
+					<button type="submit" class="btn btn-danger">Có</button>
+					&nbsp;&nbsp;
+					<a href="{% url 'jDream:view_nhan_vien' %}" class="btn btn-default">Không</a>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

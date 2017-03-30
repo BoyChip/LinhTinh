@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+	Xóa nhân viên đã chọn
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				Xóa nhân viên đã chọn
+			</div>
+
+			<div class="panel-body">
+				<form method="post" action="{% url 'jDream:delete_selected_nhan_vien' %}" class="form-horizontal">
+					{% csrf_token %}				
+						{% for instance in instances %}
+							<div class="form-group">
+								<input type="hidden" name="pk" value="{{ instance.pk }}">
+								<label class="col-sm-2">Mã nhân viên:</label>
+								<p class="col-sm-10">{{ instance.MaNhanVien }}</p>							
+								<label class="col-sm-2">Tên nhân viên:</label>
+								<p class="col-sm-10">{{ instance.TenNhanVien }}</p>
+								
+
+								<label class="col-sm-2">Địa chỉ: </label>
+								<p class="col-sm-10">{{ instance.DiaChi }}</p>
+
+								<label class="col-sm-2">Điện thoại: </label>
+								<p class="col-sm-10">{{ instance.DienThoai }}</p>
+							</div>							
+						{% endfor %}
+						<div class="form-group">
+							<h3>Bạn có muốn xóa không?</h3>
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-danger">Có</button>
+								&nbsp;&nbsp;
+								<a href="{% url 'jDream:view_nhan_vien' %}" class="btn btn-default">Không</a>
+							</div>							
+						</div>										
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

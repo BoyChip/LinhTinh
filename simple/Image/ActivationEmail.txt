@@ -1,0 +1,4 @@
+Tên tài khoản: {{username}}
+Bạn cần kích hoạt tài khoản trong vòng 1 ngày kể từ ngày nhận được email này:
+{{ activation_link }}
+Nếu hết thời gian kích hoạt mà bạn vẫn chưa kích hoạt tài khoản thì chúng tôi sẽ gửi một yêu cầu xác nhận mới.

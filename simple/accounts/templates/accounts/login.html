@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Đăng nhập
+{% endblock %}
+
+{% block body %}
+    {% load staticfiles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/login.css' %}">
+    <div id="login" class="modal">
+        {% if message %}
+            <div class="panel panel-success">
+                <div class="panel-body">
+                    {{ message }}
+                </div>
+            </div>
+        {% endif %}
+        <form class="modal-content animate" method="post">
+            {% csrf_token %}
+            <div class="img-container">
+                <span onclick="document.getElementById('login').style.display='none'" class="close">&times;</span>
+                <img src="{% static 'images/img_avatar2.png' %}" alt="Avatar" class="avatar">
+            </div>
+            <!-- Modal Content -->
+            <div class="form-container">
+                {% if form.errors %}
+                    <p>Tên tài khoản hoặc mật khẩu không đúng!!!</p>
+                {% endif %}
+                {{ form.username }}
+                {{ form.password }}
+
+                 <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Thoát</button>
+                    <button type="submit" class="loginbtn">Đăng nhập</button>
+                </div>
+            </div>
+
+            <div class="form-container" style="background-color: #f1f1f1">
+                <span class="spw">Quên <a href="{% url 'accounts:password_reset' %}">mật khẩu?</a></span>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('login');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}
