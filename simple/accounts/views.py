@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash, login as auth_login
-from jDream.models import Hang
 from .forms import (
 	LoginForm, simple_PasswordResetForm, UserChangeForm,
     simple_PasswordChangeForm, simple_UserCreationFrom,
@@ -15,14 +15,6 @@ from django.utils.http import urlsafe_base64_decode
 
 def default(request):
 	return redirect(reverse('accounts:home'))
-
-def home(request):
-	hang = Hang.objects.all()
-	context = {
-		'count': range(hang.count()),
-		'hang': hang
-	}
-	return render(request, 'accounts/home.html', context)
 
 def view_profile(request):
     return render(request, 'accounts/profile.html', {'user': request.user})

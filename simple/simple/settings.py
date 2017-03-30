@@ -80,12 +80,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'simple',
-    #    'USER': 'b1310419',
-    #   'PASSWORD': 'h*4XBn!7',
-    #    'HOST': 'localhost',
-    #    'POST': '5432'
     }
 }
 
@@ -152,4 +146,4 @@ EMAIL_HOST_PASSWORD = 'h*4XBn!7'
 EMAIL_POST = 587
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'Image/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

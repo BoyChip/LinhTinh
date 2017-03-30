@@ -22,7 +22,6 @@ urlpatterns = [
 	url(r'^$', views.default, name="default"),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^jDream/', include('jDream.urls', namespace='jDream')),
 ]
 
 if settings.DEBUG:
